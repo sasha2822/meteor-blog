@@ -1,0 +1,20 @@
+/* CSS declarations go here */
+
+.trimite:hover{
+	color: orange;
+}
+
+h1 {
+	color: blue;
+	text-allign:center;
+	float:center;
+}
+
+#logo{
+	float:right;
+}
+input {
+	font-size: 20px;
+	font-family: monospace ,courier;
+
+}

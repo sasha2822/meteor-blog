@@ -1,0 +1,69 @@
+<head >
+	<link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <title>Turtle's Blog</title>
+</head>
+
+<body background="free-blue-background.jpg">
+	<div id="logo">
+	<img src="turtle.jpg" alt=" " style="width:284px;height:248px;border-radius:25px">
+</div>
+  <h1 allign="center">Articles</h1>
+
+  <form class="new-data">
+  	<input type="text" name="title" placeholder="Title" allign="center"><br /><br />
+  	<textarea rows="20" cols="40" name="text" placeholder="Content article" allign="center"></textarea><br /><br />
+  	Culoarea: <br />
+  	<select name="textcolor">
+  		<option value="red">Red</option>
+  		<option value="green">Green</option>
+  		<option value="blue">Blue</option>
+  		<option value="orange">Orange</option>
+  		<option value="purple">Purple</option>
+  		<option value="magenta">Magenta (Telekom)</option>  	</select><br /><br />
+  		<a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false">Follow @twitter</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  	<input type="submit" class="trimite" value="Send"><br />
+  </form>
+
+	<p>Number of articles: {{count}}.</p>
+	
+	<ul>
+		{{#each data}}
+		   {{> date}}
+		{{/each}}
+	</ul>
+
+</body>
+
+<template name="date">
+  <p style="color:{{textcolor}}">Ai introdus un nou articol in data de <u>{{createdAt}}</u></p>
+  <button class="delete" style="float:right;">Delete</button>
+  <li class='title'>Title: <span style="color:{{textcolor}}; font-size:20px;">{{title}}</span></li>
+  <li>Content: <span style="color:{{textcolor}}">{{text}}</span></li>
+  	<br />
+	<button class='showcomm'>Show comments ({{num_comm _id}} comments)</button>
+
+	{{> comments}}
+
+  <hr>
+</template>
+
+<template name="comments">
+	<form class="new-comm" style='display: none'>
+		<p>Add a new comment:</p>
+		<p>Name</p> <input type="text" name="nameComm">
+		<p>Comment</p> <textarea rows="7" cols="35" name="comm" ></textarea><br/>
+		<input type="submit" value="Send comment" >
+		
+		{{#each getComments _id}}
+			{{>comment}}
+		{{/each}}
+
+	</form>
+</template>
+
+<template name="comment">
+	<p>
+		{{name}}: {{comm}}
+	</p>
+</template>
